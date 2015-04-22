@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>html5-demo1</title>
+<style>
+body{ text-align:center;}
+</style>
+<script>
+window.onload=function(){
+	var oC=document.getElementById('c1');
+	var gd=oC.getContext('2d');
+	gd.lineWidth=5;
+	gd.strokeStyle='#163B62';
+	gd.beginPath();
+	gd.arc(70,70,40,0,Math.PI*2,false);
+	gd.stroke();
+	
+	gd.strokeStyle='#000';
+	gd.beginPath();
+	gd.arc(160,70,40,0,Math.PI*2,false);
+	gd.stroke();
+	
+	gd.strokeStyle='#BF0628';
+	gd.beginPath();
+	gd.arc(250,70,40,0,Math.PI*2,false);
+	gd.stroke();
+	
+	gd.strokeStyle='#EBC41F';
+	gd.beginPath();
+	gd.arc(110,110,40,0,Math.PI*2,false);
+	gd.stroke();
+	
+	gd.strokeStyle='#198E4A';
+	gd.beginPath();
+	gd.arc(200,110,40,0,Math.PI*2,false);
+	gd.stroke();
+	
+	gd.strokeStyle='#163B62';
+	gd.beginPath();
+	gd.arc(70,70,40,Math.PI*1.9,Math.PI*2.1,false);
+	gd.stroke();
+	
+	gd.strokeStyle='#000';
+	gd.beginPath();
+	gd.arc(160,70,40,Math.PI*0.9,Math.PI*2.1,false);
+	gd.stroke();
+	
+	gd.strokeStyle='#BF0628';
+	gd.beginPath();
+	gd.arc(250,70,40,Math.PI*0.9,Math.PI*2.1,false);
+	gd.stroke();
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="800" height="600" style="border:1px solid #000;"></canvas>
+</body>
+</html>
