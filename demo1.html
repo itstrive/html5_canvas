@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#000;}
+#c1{ background:#fff;}
+</style>
+<script>
+window.onload=function(){
+	var oC=document.getElementById('c1');
+	var gd=oC.getContext('2d');
+	
+	//画方块
+	gd.fillRect(100,100,100,300);
+	gd.stroke();
+	
+	//贴个字
+	gd.font='Arial';
+	gd.textAlign='center';
+	gd.fillStyle='red';
+	gd.fillText('Hello World',300,200);
+	gd.strokeText('Hello World',300,200);
+	gd.stroke();
+	
+	//画圆
+	gd.arc(400,400,30,0,Math.PI*2,true);
+	gd.fillStyle='red';
+	gd.stroke();
+	gd.fill();
+	
+	//设置渐变
+	var g=gd.createLinearGradient(0,0,0,160);
+	g.addColorStop(0,'#f00');
+	g.addColorStop(1,'#ff0');
+	gd.fillStyle=g;
+	gd.fillRect(30,30,100,100);
+	gd.fill();
+	
+	//设置阴影
+	gd.shadowOffsetX=10;
+	gd.shadowOffsetY=10;
+	gd.shadowBlur=5; 
+	gd.shadowColor='rgba(0,0,0,0.5)';
+	gd.fillStyle='#ccc';
+	gd.fillRect(500,350,150,100);
+	
+	
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

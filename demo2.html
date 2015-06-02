@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#000;}
+#c1{ background:#fff;}
+</style>
+<script>
+window.onload=function(){
+	var oC=document.getElementById('c1');
+	var gd=oC.getContext('2d');
+	
+	var oImg=new Image();
+	oImg.onload=function(){
+		gd.drawImage(this,0,0);
+	};
+	oImg.src='https://www.baidu.com/img/bd_logo1.png';
+	
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

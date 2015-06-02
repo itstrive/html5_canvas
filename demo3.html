@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#000;}
+#c1{ background:#fff;}
+</style>
+<script>
+window.onload=function(){
+	var oC=document.getElementById('c1');
+	var gd=oC.getContext('2d');
+	
+	gd.fillRect(20,20,100,200);
+	gd.fill();
+	
+	//getImageData  读取canvas的内容
+	var imgData=gd.getImageData(0,0,oC.width,oC.height);
+	
+	
+	gd.putImageData(imgData,0,0);
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
