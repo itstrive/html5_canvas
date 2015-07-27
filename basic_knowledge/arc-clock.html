@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arc-clock</title>
+	<style>
+	body{ background:#000;}
+	#c1{ background: #fff;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gd=oC.getContext('2d');
+
+		var x=200;
+		var y=200;
+		var r=100;
+
+		function tick(){
+			gd.clearRect(0,0,oC.width,oC.height);
+			var oDate=new Date();
+			var h=oDate.getHours();
+			var m=oDate.getMinutes();
+			var s=oDate.getSeconds();
+			var ms=oDate.getMilliseconds();
+			var oHoursValue = (-90 + h*30 + m/60*30) * Math.PI/180;
+			var oMinValue = (-90 + m*6+s/60*6) * Math.PI/180;
+			var oSecValue = (-90 + s*6+ms/1000*6) * Math.PI/180;
+
+			//画表圈子
+			gd.beginPath();
+			gd.arc(x,y,r,0,Math.PI*2,true);
+			gd.stroke();
+			gd.closePath();
+
+			//画刻度
+			gd.beginPath();
+			for(var i=0; i<60; i++){
+				gd.moveTo(x,y);
+				gd.arc(x,y,r,6*i*Math.PI/180, 6*(i+1)*Math.PI/180, false);
+			}
+			gd.closePath();
+			gd.stroke();
+
+			//画个白色区域
+			gd.fillStyle = '#fff';
+			gd.beginPath();
+			gd.moveTo(x, y);
+			gd.arc(x, y, r*19/20, 0, 360*Math.PI/180,true);
+			gd.closePath();
+			gd.fill();
+
+			//画大刻度
+			gd.lineWidth = 3;
+			gd.beginPath();
+			for(var i=0; i<12; i++){
+				gd.moveTo(x, y);
+				gd.arc(x, y, r, 30*i*Math.PI/180, 30*(i+1)*Math.PI/180, false);
+			}
+			gd.closePath();
+			gd.stroke();
+
+			//画白色区域
+			gd.fillStyle = '#fff';
+			gd.beginPath();
+			gd.moveTo(x, y);
+			gd.arc(x, y, r*18/20, 0, 360*Math.PI/180,true);
+			gd.closePath();
+			gd.fill();
+
+			//画时针
+			gd.lineWidth = 5;
+			gd.beginPath();
+			gd.moveTo(x, y);
+			gd.arc(x, y, r*10/20, oHoursValue, oHoursValue, false); //起始点和终止点写同一个弧度，就是一条直线
+			gd.closePath();
+			gd.stroke();
+
+			//画分针
+			gd.lineWidth = 3;
+			gd.beginPath();
+			gd.moveTo(x, y);
+			gd.arc(x, y, r*14/20, oMinValue, oMinValue, false); //起始点和终止点写同一个弧度，就是一条直线
+			gd.closePath();
+			gd.stroke();
+
+			//画秒针
+			gd.lineWidth = 1;
+			gd.beginPath();
+			gd.moveTo(x, y);
+			gd.arc(x, y, r*18/20, oSecValue, oSecValue, false); //起始点和终止点写同一个弧度，就是一条直线
+			gd.closePath();
+			gd.stroke();
+
+			//画帽
+			gd.fillStyle='#000';
+			gd.beginPath();
+			gd.moveTo(x,y);
+			gd.arc(x,y,8,0,360*Math.PI/180,true);
+			gd.fill();
+		}
+
+		setInterval(tick,1000/60);
+		tick();
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="500" height="500"></canvas>
+</body>
+</html>

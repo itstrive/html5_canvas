@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>lineCap</title>
+	<title>save</title>
 	<style>
 	body{ background:#000;}
 	#c1{ background: #fff;}
@@ -12,11 +12,25 @@
 		var oC=document.getElementById('c1');
 		var gd=oC.getContext('2d');
 
-		gd.lineWidth=20;
-		gd.lineCap='round';
+		gd.save();
+		gd.fillStyle='red'; //放到save里面不会对下面的形状产生影响
+
+		gd.beginPath();
 		gd.moveTo(100,100);
+		gd.lineTo(200,200);
+		gd.lineTo(300,200);
+		gd.closePath();
+		gd.fill();
+
+		gd.restore();
+
+		gd.beginPath();
+		gd.moveTo(100,200);
+		gd.lineTo(200,300);
 		gd.lineTo(300,300);
-		gd.stroke();
+		gd.closePath();
+		gd.fill();
+
 	};
 	</script>
 </head>

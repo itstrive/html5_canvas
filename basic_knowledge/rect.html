@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>lineCap</title>
+	<title>rect</title>
 	<style>
 	body{ background:#000;}
 	#c1{ background: #fff;}
@@ -12,10 +12,9 @@
 		var oC=document.getElementById('c1');
 		var gd=oC.getContext('2d');
 
-		gd.lineWidth=20;
-		gd.lineCap='round';
-		gd.moveTo(100,100);
-		gd.lineTo(300,300);
+		gd.beginPath();
+		gd.rect(100.5,100.5,300,100);
+		gd.closePath();
 		gd.stroke();
 	};
 	</script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>lineCap</title>
+	<title>path</title>
 	<style>
 	body{ background:#000;}
 	#c1{ background: #fff;}
@@ -12,11 +12,23 @@
 		var oC=document.getElementById('c1');
 		var gd=oC.getContext('2d');
 
-		gd.lineWidth=20;
-		gd.lineCap='round';
+		gd.beginPath();
 		gd.moveTo(100,100);
-		gd.lineTo(300,300);
+		gd.lineTo(200,200);
 		gd.stroke();
+
+		gd.lineTo(300,200);
+		gd.closePath();
+		gd.stroke();
+
+		gd.beginPath();  //不加beginPath下面又画一次
+		gd.moveTo(100,200);
+		gd.lineTo(200,300);
+		gd.stroke();
+		gd.lineTo(300,300);
+		gd.closePath();
+		gd.stroke();
+		gd.fill();
 	};
 	</script>
 </head>

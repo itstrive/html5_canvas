@@ -2,25 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>lineCap</title>
+	<title>move-rect</title>
 	<style>
 	body{ background:#000;}
-	#c1{ background: #fff;}
+	#c1{ background: #fff; width:400px; height:400px;}
 	</style>
 	<script>
 	window.onload=function(){
 		var oC=document.getElementById('c1');
 		var gd=oC.getContext('2d');
 
-		gd.lineWidth=20;
-		gd.lineCap='round';
-		gd.moveTo(100,100);
-		gd.lineTo(300,300);
-		gd.stroke();
+		gd.fillRect(10,10,100,100);
 	};
 	</script>
 </head>
 <body>
-	<canvas id="c1" width="800" height="600"></canvas>
+	<canvas id="c1"></canvas>
 </body>
 </html>

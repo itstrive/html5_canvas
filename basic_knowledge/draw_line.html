@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>draw-line</title>
+	<style>
+	body{ background:#000;}
+	#c1{ background: #fff;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gd=oC.getContext('2d');
+
+		oC.onmousedown=function(ev){
+			var oEvent=ev || event;
+			var disX=oEvent.clientX-oC.offsetLeft;
+			var disY=oEvent.clientY-oC.offsetTop;
+			gd.moveTo(disX,disY);
+
+			document.onmousemove=function(ev){
+				var oEvent=ev || event;
+				gd.lineTo(oEvent.clientX-oC.offsetLeft, oEvent.clientY-oC.offsetTop);
+				gd.stroke();
+			};	
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+			};	
+			return false;
+		};
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
