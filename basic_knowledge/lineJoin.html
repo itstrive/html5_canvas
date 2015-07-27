@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fillRect</title>
+	<style>
+	body{ background:#000;}
+	#c1{ background: #fff;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gd=oC.getContext('2d');
+
+		gd.fillStyle='yellow';
+		gd.strokeStyle='blue';
+		gd.lineWidth=10;
+
+		gd.lineJoin='bevel'; //斜切
+		//gd.lineJoin='round'; //圆角
+		//gd.lineJoin='miter'; //默认
+		
+		/*绘制是有顺序的，先写后写，效果是不一样的*/
+		gd.fillRect(100,100,300,150);
+		gd.strokeRect(100,100,300,150);
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
