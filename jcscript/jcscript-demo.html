@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JcScript-DEMO</title>
+<style>
+body {background:#000;}
+#c1 {background:#fff;}
+</style>
+<script src="jCanvaScript.1.5.18.js"></script>
+<script>
+// API-> http://jcscript.com/documentation
+window.onload = function(){
+	jc.start('c1',true); //第二个参数true意为每次重新画，比如拖拽的时候
+	
+	jc.circle(200,200,100,'#f00',1).id('cricle1').draggable();
+	
+	jc.start('c1');
+	
+	
+	document.querySelector('#btn1').onclick=function(){
+		jc('#cricle1').color('#ff0').animate({x:100,y:100,radius:50},2000,{type:'inOut', fn:'elastic', n:1.5});	
+	};
+}
+</script>
+</head>
+
+<body>
+<input type="button" value="按钮" id="btn1"><br>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
